@@ -2,41 +2,55 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
+    <div class="modal fade" tabindex="-1"
+     role="dialog" id="winModal">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title"></h4>
 
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
+            </div>
+            <div class="modal-body">
+                <p id="valorId" hidden></p>
+                <div id="modal-content">
+                    Cargando...
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary " id="btn-GuardarMaterial">Guardar</button>
+            </div>
+        </div><!-- /.modal-content -->
     </div>
+</div>
+
+<h2>Empleados</h2>
+
+<a data-toggle="modal" class="btn btn-primary pull-right" id="btnNuevoMaterial" href="#winModal">Nuevo</a>
+<br />
+
+<div class="container">
+    <asp:DropDownList ID="ddDeptos" runat="server" class="form-control" AutoPostBack="true" OnSelectedIndexChanged = "ddDeptos_FilterDropdown" DataTextField="Nombre" DataValueField="Id_Departamento"></asp:DropDownList>
+    <br />
+
+    <asp:TextBox ID="TextBox1" runat="server" class="form-control" ></asp:TextBox>
+    <br />
+    <asp:GridView ID="grvMateriales" AutoGenerateColumns="false" runat="server" class="table table-striped table-bordered" style="width:100%">
+        <Columns>
+            <asp:BoundField DataField="Id" HeaderText="ID" />
+            <asp:BoundField DataField="Nombre" HeaderText="NOMBRE" />
+            <asp:BoundField DataField="Sexo" HeaderText="SEXO" />
+
+        </Columns>        
+        
+    </asp:GridView>
+
+    <br />
+    
+   
+</div>
 
 </asp:Content>
